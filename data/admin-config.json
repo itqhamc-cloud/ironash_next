@@ -1,0 +1,55 @@
+{
+  "config": {
+    "googleScriptUrl": "",
+    "passwordHash": "7471500c9337cd76609a79ec217c0b0de5dd93bcf3e8125190efe5ed1dba6f64560fc82a63bef1736afb865d7285bf6f516d2829c30b8271ae8a9e0ad4f32ffe",
+    "salt": "a957dd08694aaecc44968857949d4ee4",
+    "updatedAt": "2026-09-09T10:27:17.835Z",
+    "contactInfo": {
+      "whatsappNumber": "+92 300 1234567",
+      "supportPhone": "+92 310 9415571",
+      "supportEmail": "info@ironash.pk",
+      "hubLocation": "Blue Area, Islamabad, Pakistan",
+      "workingHours": "Mon - Sat: 8:00 AM - 7:00 PM",
+      "quickWhatsAppMessage": "Salam IronAsh! I have an inquiry about your Himalayan Shilajit products.",
+      "phone": "+92 300 1234567",
+      "email": "it.qhamc@gmail.com",
+      "address": "Peshawar, Khyber Pakhtunkhwa, Pakistan",
+      "city": "Peshawar"
+    },
+    "emailConfig": {
+      "adminNotificationEmail": "it.qhamc@gmail.com",
+      "notifyAdminOnNewOrder": true,
+      "notifyCustomerOnNewOrder": true,
+      "senderName": "IronAsh Himalayan Shilajit",
+      "fromEmail": "orders@ironash.pk",
+      "customerEmailNote": "Thank you for your order! Your 100% natural Gold-Grade Shilajit order is being processed for prompt dispatch with Cash on Delivery nationwide.",
+      "emailProvider": "smtp",
+      "smtpHost": "",
+      "smtpPort": 587,
+      "smtpUser": "",
+      "smtpPass": "",
+      "smtpSecure": false
+    }
+  },
+  "sessions": {
+    "8848b355d5633f6641b7732523adf10859a6668951515eb6b3d3507e439b70f7": {
+      "token": "8848b355d5633f6641b7732523adf10859a6668951515eb6b3d3507e439b70f7",
+      "createdAt": 1788943794988,
+      "expiresAt": 1789548594988
+    },
+    "380461887e2f2f8b85dff0918243b9788e059af481cb443e7041dfe8cb12fdef": {
+      "token": "380461887e2f2f8b85dff0918243b9788e059af481cb443e7041dfe8cb12fdef",
+      "createdAt": 1788949559765,
+      "expiresAt": 1789554359765
+    },
+    "e605c578d0912bbf693fc2f9c53fc42f39f7d5258a224fd18668cca8193c447e": {
+      "token": "e605c578d0912bbf693fc2f9c53fc42f39f7d5258a224fd18668cca8193c447e",
+      "createdAt": 1788949631445,
+      "expiresAt": 1789554431445
+    }
+  },
+  "failedAttempts": {
+    "count": 0,
+    "lockedUntil": 0
+  }
+}

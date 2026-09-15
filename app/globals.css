@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Disable dev tools button / floating indicator */
+nextjs-portal,
+#__next-build-watcher,
+[data-nextjs-dialog-overlay],
+div[data-nextjs-toast],
+div[data-next-badge],
+#nextjs-dev-tools,
+button[aria-label="DevTools"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

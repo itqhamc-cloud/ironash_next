@@ -1,0 +1,8 @@
+{
+  "name": "IronAsh - Himalayan Shilajit & Pure Herbal Store",
+  "description": "IronAsh - Premium Himalayan herbal products, Shilajit resin, and wellness store with slide-out cart, Cash on Delivery across Pakistan, admin portal, and Google Sheets order syncing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
