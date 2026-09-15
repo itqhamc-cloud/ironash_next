@@ -90,12 +90,55 @@ Because this is a full-stack Next.js web application with dynamic routes, `/admi
 4. Set Build command to `npm run build` and publish directory to `.next`.
 5. Click **Deploy**.
 
-### Option C: Deploy to cPanel (Custom Domain)
-If you prefer running on traditional cPanel hosting:
-1. In cPanel, use **Setup Node.js App** (v18 or v20).
-2. Set application startup file to `server.js` (included in the root).
-3. Run `npm install` and `npm run build`.
-4. Your site will run directly on your custom domain via Phusion Passenger!
+### Option C: Deploy to cPanel (Custom Domain / Shared Hosting)
+
+For cPanel hosting (LiteSpeed `lsnode.js` or Phusion Passenger), choose either of the two production-ready solutions below:
+
+#### 🏆 Method 1: Standalone Deployment (Recommended — No `npm install` on cPanel!)
+Next.js compiles a self-contained, standalone production build with its own minimal `node_modules` already included. You **never** need to run `npm install` on cPanel or deal with shared hosting memory timeouts!
+
+1. **Build and bundle locally on your computer**:
+   ```bash
+   npm run build
+   node scripts/prepare-cpanel.js
+   ```
+2. **Compress the standalone folder**:
+   - Open `.next/standalone` on your computer.
+   - Select all files and folders inside (`.next`, `data`, `node_modules`, `package.json`, `public`, `server.js`).
+   - Compress them into a `.zip` file (e.g., `deploy.zip`).
+3. **Upload to cPanel**:
+   - In cPanel **File Manager**, delete any existing files in your app folder (e.g. `/home/username/app`).
+   - Upload `deploy.zip` and click **Extract**.
+4. **Configure in cPanel "Setup Node.js App"**:
+   - **Node.js version**: 20.x (or 18.20+)
+   - **Application startup file**: `server.js`
+   - Click **Start App** (or **Restart**).
+   - *Done! You do not need to click "Run NPM Install" on cPanel.*
+
+---
+
+#### 🛠️ Method 2: Standard Deployment with Lightweight `package.json`
+If you prefer running `server.js` with cPanel's "Run NPM Install" button:
+
+1. **Delete any broken `node_modules`**: In cPanel File Manager, right-click and delete any existing `node_modules` folder (check "Skip trash").
+2. **Use production dependencies**: In File Manager, replace your `package.json` content with `cpanel.package.json` (which only contains the 12 runtime dependencies and zero dev tools).
+3. **Run NPM Install in cPanel**: In **Setup Node.js App**, click **Run NPM Install**. Because it only installs 12 small runtime packages, it completes in ~15 seconds without hitting cPanel's 60-second browser timeout!
+4. **Restart App**: Set startup file to `server.js` and click **Restart App**.
+
+---
+
+#### 🔍 Common Deployment Troubleshooting
+
+- **`Error: Cannot find module 'next'` in `stderr.log` (`lsnode.js` / LiteSpeed)**:
+  This means `node_modules/next` does not exist on cPanel because a previous UI `npm install` timed out or failed. Use Method 1 (Standalone) which has `node_modules/next` already bundled, or delete `node_modules`, copy `cpanel.package.json` into `package.json`, and click **Run NPM Install**.
+- **`Error: Cannot find module 'typescript'` on Windows during local build**:
+  Run `npm install --include=dev` on your Windows PC to ensure build-time tools like TypeScript are installed.
+- **Running `npm install` with zero terminal access via Cron Jobs**:
+  If the cPanel UI button still times out on slow shared hosting, add a 1-minute temporary cron job in cPanel > **Cron Jobs**:
+  ```bash
+  source /home/USERNAME/nodevenv/APP_FOLDER/20/bin/activate && cd /home/USERNAME/APP_FOLDER && npm install --omit=dev > npm_result.log 2>&1
+  ```
+  Once the log confirms completion, delete the cron job and restart the app.
 
 ---
 

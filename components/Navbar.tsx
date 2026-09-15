@@ -23,8 +23,8 @@ export const Navbar: React.FC<{ initialBranding?: SiteBrandingConfig }> = ({
 
   // Initialize theme and branding from server
   useEffect(() => {
-    setMounted(true);
     const timer = setTimeout(() => {
+      setMounted(true);
       const savedTheme = localStorage.getItem('ironash_theme');
       if (savedTheme) {
         setIsDarkMode(savedTheme === 'dark');
